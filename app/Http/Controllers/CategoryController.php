@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\QueryException;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,9 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index',compact('categories'));
-        
+        $categories = Category::paginate(8);
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -45,12 +44,12 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = $request->name;
-        $category->slug =Str::slug($request->name,"-");
+        $category->slug = Str::slug($request->name, "-");
         $category->description = $request->description;
         $category->save();
 
 
-        return redirect()->route('category.index')->with('success', 'Category added successfully.');
+        return redirect()->route('category.index')->with('message', 'Category added successfully.');
     }
 
     /**
@@ -73,7 +72,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categories = Category::find($id);
-        return view('categories.edit',compact('categories'));
+        return view('categories.edit', compact('categories'));
     }
 
     /**
@@ -87,16 +86,16 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $request->validate([
-            'name' => 'required|min:4|max:28|unique:categories,name,'.$category->id,
+            'name' => 'required|min:4|max:28|unique:categories,name,' . $category->id,
             'description' => 'required',
         ]);
 
         $category->name = $request->name;
-        $category->slug =Str::slug($request->name,"-");
+        $category->slug = Str::slug($request->name, "-");
         $category->description = $request->description;
         $category->update();
 
-        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('category.index')->with('message', 'Category updated successfully.');
     }
 
     /**
@@ -107,10 +106,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->route('category.index')
-        ->with('message','Category Deleted Successfully');
 
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            return redirect()->route('category.index')
+                ->with('message', 'Category Deleted Successfully');
+        } catch (QueryException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
     }
+    
 }
+

@@ -9,9 +9,12 @@
                 <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                 {{ Session::forget('message') }}
             @endif
+            @if (session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
             <div class="d-flex justify-content-center align-items-center">
 
-                <table class="table table-bordered" style="width: 70%">
+                <table class="table table-bordered text-center" style="width: 70%">
                     <thead>
                         <tr>
                             <th scope="col" style="width: 10%">SN</th>
@@ -21,28 +24,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $key => $cat)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $cat->name }}</td>
-                                <td class="description_Limit">{{ $cat->description }}</td>
-                                <td>
-                                
+                        @if (!empty($categories))
+
+                            @foreach ($categories as $key => $cat)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td style="font-weight: 500">{{ $cat->name }}</td>
+                                    <td>{{ $cat->description }}</td>
+                                    <td>
                                         <a href="{{ route('category.edit', $cat->id) }}" class="btn btn-success"
                                             style="font-size: 12px;padding:5px; margin:5px">Edit</a>
-                                        <form action="{{ route('category.destroy',$cat->id) }}" method="POST" style="display: inline-block">
+                                        <form action="{{ route('category.destroy', $cat->id) }}" method="POST"
+                                            style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="alert('Are you Sure?')"
+                                            <button type="submit" id="id" class="btn btn-danger" 
                                                 style="font-size: 12px;padding:5px; margin:5px">
                                                 Delete
                                             </button>
                                         </form>
-                                 
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                                </td>
+                        @else
+                            <tr>
+                                <td colspan="10">There are no data.</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -50,22 +59,3 @@
     </div>
 
 @endsection
-
-<script type="text/javascript">
-    function delete_check(id) {
-        Swal.fire({
-            title: 'Are you sure?',
-            html: "<b>You will delete it permanently!</b>",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
-            width: 400,
-        }).then((result) => {
-            if (result.value) {
-                $('#deleteCheck_' + id).submit();
-            }
-        })
-    }
-</script>

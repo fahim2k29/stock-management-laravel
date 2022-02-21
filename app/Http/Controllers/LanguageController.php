@@ -11,4 +11,5 @@ class LanguageController extends Controller
         session(['APP_LOCATE' => $lang]);
         return redirect()->back();
     }
+
 }

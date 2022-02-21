@@ -2,7 +2,12 @@
 
 @section('content')
     <h1>Category</h1>
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+
+    <div id="app">
+    
+    </div>
+
+    {{-- <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
         <form action="{{ route('category.store') }}" method="POST" class="p-5 rounded shadow" style="width: 40rem;">
             @csrf
             <h3 class="text-center pb-2 display-6">Category Create</h3>
@@ -33,7 +38,17 @@
                 </button>
             </div>
         </form>
-    </div>
-
+    </div> --}}
 
 @endsection
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.19/vue.cjs.min.js" integrity="sha512-2ftG6Hks6q07Ca+h8f4WCFWQAZca6bm1klWMAFGev51hiusd6FFaRT+kFWcj1G2KjFgZrns1CuwR8eA4OA0zLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script >
+    const app = new Vue({
+        template:'<h1>Hello Vue With CDN</h1>'
+    });
+    app.mount("#app");
+</script>

@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
+    
 </head>
 
 <body>
@@ -42,7 +43,8 @@
             <!-- Top navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
-                    <button class="btn btn-sm btn-primary" id="sidebarToggle">{{ __('adminHome.toggle_menu') }}</button>
+                    <button class="btn btn-sm btn-primary"
+                        id="sidebarToggle">{{ __('adminHome.toggle_menu') }}</button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span
@@ -61,13 +63,17 @@
                                 </div>
                             </li> --}}
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('adminHome') }}">{{ __('adminHome.home') }}</a>
+                                <a class="nav-link"
+                                    href="{{ route('adminHome') }}">{{ __('adminHome.home') }}</a>
+                            </li>
+                          
+                            <li class="nav-item active">
+                                <a class="nav-link"
+                                    href="{{ route('product.index') }}">{{ __('Product') }}</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('product.index') }}">{{ __('Product') }}</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('category.index') }}">{{ __('Category') }}</a>
+                                <a class="nav-link"
+                                    href="{{ route('category.index') }}">{{ __('Category') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -85,7 +91,7 @@
                                         @csrf
                                     </form>
                                     {{-- <a class="dropdown-item" href="{{ route('logout') }}">Logout</a> --}}
-
+                                    
                                 </div>
                             </li>
                         </ul>
@@ -100,14 +106,22 @@
                     </main>
                 </div>
             </div>
-
-
         </div>
     </div>
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--Sweetalert2-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <!-- Axios-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.12/vue.js"></script> --}}
+    <!-- Vue js-->
+    
 </body>
 
 </html>

@@ -31,7 +31,7 @@ Route::group(['middleware'=>['auth']],function(){
 //admin route
 Route::get('/admin', [AdminController::class, 'index'])->name('adminHome');
 //language route
-Route::get('/admin/home/{lang}', [LanguageController::class, 'index'])->name('admin.home.lang');
+// Route::get('/admin/home/{lang}', [LanguageController::class, 'index'])->name('admin.home.lang');
 
     //category
     Route::resource('category', CategoryController::class);

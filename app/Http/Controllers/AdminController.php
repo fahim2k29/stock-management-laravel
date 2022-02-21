@@ -20,7 +20,6 @@ class AdminController extends Controller
         $categories = Category::get('id');
         $products = Product::get('id');
         $productQuantity = Product::sum('quantity');
-        
         return view('admin.index',compact('admins','categories','products','productQuantity'));
     }
 
