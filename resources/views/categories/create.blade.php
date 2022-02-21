@@ -4,10 +4,10 @@
     <h1>Category</h1>
 
     <div id="app">
-    
+
     </div>
 
-    {{-- <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
         <form action="{{ route('category.store') }}" method="POST" class="p-5 rounded shadow" style="width: 40rem;">
             @csrf
             <h3 class="text-center pb-2 display-6">Category Create</h3>
@@ -38,7 +38,7 @@
                 </button>
             </div>
         </form>
-    </div> --}}
+    </div>
 
 @endsection
 
