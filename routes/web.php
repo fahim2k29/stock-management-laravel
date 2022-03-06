@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>['auth']],function(){
 
@@ -35,11 +36,15 @@ Route::get('/admin', [AdminController::class, 'index'])->name('adminHome');
 
     //category
     Route::resource('category', CategoryController::class);
-    
-    
+
+
     //product
     Route::resource('product', ProductController::class);
-    
+
+    //delivery
+    Route::resource('delivery', DeliveryController::class);
+
+
 });
 
 

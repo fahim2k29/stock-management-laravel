@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
-    
+
 </head>
 
 <body>
@@ -28,13 +28,21 @@
                     <a class="dropdown-item" href="{{ route('category.index') }}">Category List</a>
                     <a class="dropdown-item" href="{{ route('category.create') }}">Add Category</a>
                 </div>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 nav-item dropdown nav-link dropdown-toggle"
+                <a .class="list-group-item list-group-item-action list-group-item-light p-3 nav-item dropdown nav-link dropdown-toggle"
                     id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">Manage Product
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('product.index') }}">Product List</a>
                     <a class="dropdown-item" href="{{ route('product.create') }}">Add Product</a>
+                </div>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 nav-item dropdown nav-link dropdown-toggle"
+                   id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Delivery
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{route('delivery.create')}}">Create Delivery</a>
+                    <a class="dropdown-item" href="{{route('delivery.index')}}">Delivery List</a>
                 </div>
             </div>
         </div>
@@ -56,7 +64,7 @@
                                     data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                                     EN
                                 </a>
-                               
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.home.lang', 'bn') }}">BN</a>
                                 <a class="dropdown-item" href="{{ route('admin.home.lang', 'en') }}">EN</a>
@@ -66,7 +74,7 @@
                                 <a class="nav-link"
                                     href="{{ route('adminHome') }}">{{ __('adminHome.home') }}</a>
                             </li>
-                          
+
                             <li class="nav-item active">
                                 <a class="nav-link"
                                     href="{{ route('product.index') }}">{{ __('Product') }}</a>
@@ -91,7 +99,7 @@
                                         @csrf
                                     </form>
                                     {{-- <a class="dropdown-item" href="{{ route('logout') }}">Logout</a> --}}
-                                    
+
                                 </div>
                             </li>
                         </ul>
@@ -118,10 +126,10 @@
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <!-- Axios-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.12/vue.js"></script> --}}
     <!-- Vue js-->
-    
+
 </body>
 
 </html>
