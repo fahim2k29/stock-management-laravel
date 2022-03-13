@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+//use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\DeliveryController;
+//use App\Http\Controllers\HomeController;
+//use App\Http\Controllers\ProductController;
+//use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;

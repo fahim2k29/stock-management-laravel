@@ -28,7 +28,7 @@
                     <a class="dropdown-item" href="{{ route('category.index') }}">Category List</a>
                     <a class="dropdown-item" href="{{ route('category.create') }}">Add Category</a>
                 </div>
-                <a .class="list-group-item list-group-item-action list-group-item-light p-3 nav-item dropdown nav-link dropdown-toggle"
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 nav-item dropdown nav-link dropdown-toggle"
                     id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">Manage Product
                 </a>
